@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="sl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NajdiSoigralce - Aktivnost</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/transition.css">
+    <link rel="stylesheet" href="../css/enaAktivnost.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+   
+</head>
+<body>
+<header>
+<div class="logo">NajdiSoigralce</div>
+    <div class="hamburger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <nav class="nav">
+
+        <a href="index.html">Domov</a>
+        <a href="info.html">Info</a>
+        <a href="contact.html">Kontakt</a>
+        <a href="seznam_aktivnosti.html">Moje aktivnosti</a>
+        <a href="uporabnik.html">Uporabnik</a>
+        <div class="dropdown">
+            <span class="dropdown-btn">Izberi šport</span>
+            <div class="dropdown-content">
+                <a href="sporti1.html">Športi z žogo</a>
+                <a href="sporti2.html">Športi z loparjem</a>
+                <a href="sporti3.html">Kontaktni športi</a>
+            </div>
+        </div>
+        <a id="auth-link" href="#">
+           Prijava/Registracija
+        </a>
+    </nav>
+</header>
+
+<div class="container">
+    <div id="loading" class="loading">
+        <i class="fas fa-spinner fa-spin"></i>
+        Nalaganje aktivnosti...
+    </div>
+    
+    <div id="activity-detail" class="activity-detail" style="display: none;">
+        <div class="activity-header">
+            <div class="activity-main-info">
+                <h1 id="activity-title">Nalaganje...</h1>
+                <div class="activity-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span id="activity-location">Nalaganje...</span>
+                </div>
+                <div class="activity-date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span id="activity-date">Nalaganje...</span>
+                </div>
+                <p id="activity-description">Nalaganje opisa...</p>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="join-btn">
+                        Prijavi se
+                    </button>
+                     <button class="btn btn-secondary" id="add-calendar-btn">
+                        Dodaj v koledar
+                     </button>
+                    <button class="btn btn-secondary" id="share-btn">
+                        <i class="fas fa-share"></i>
+                        Deli
+                    </button>
+                    <button class="btn btn-secondary" id="download-pdf-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        Prenesi PDF
+                    </button>
+                </div>
+            </div>
+            
+            <div class="activity-participants-info">
+                <div class="participant-info">
+                    <i class="fas fa-users"></i>
+                    <span class="participant-count">
+                        <span id="participant-min">0</span>/<span id="participant-max">0</span>
+                    </span>
+                </div>
+                <div id="organizer-info">
+                    <strong>Trener:</strong>
+                    <span id="organizer-name">Nalaganje...</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="map-section">
+            <h3><i class="fas fa-map"></i> Lokacija</h3>
+            
+            <!-- Ovijalni element za zemljevid in sliko -->
+            <div id="map-wrapper">
+                <div id="map" class="map-container"></div>
+                <!-- Nadomestna slika zemljevida bo dodana tukaj dinamično -->
+            </div>
+        </div>
+    
+        <div class="comment-section">
+            <div class="comments-header">
+                <h3><i class="fas fa-comments"></i> Komentarji</h3>
+                <span id="comments-count">0 komentarjev</span>
+            </div>
+            
+            <div class="comment-form">
+                <textarea id="comment-input" class="comment-input" placeholder="Dodaj komentar..."></textarea>
+            </div>
+    
+            <div class="comment-actions">
+                <div class="image-upload">
+                    <input type="file" id="image-input" accept="image/*" multiple style="display: none;">
+                    <button class="upload-btn" onclick="document.getElementById('image-input').click()">
+                        <i class="fas fa-camera"></i> Dodaj slike
+                    </button>
+                    <span id="image-count">0 slik</span>
+                </div>
+                <button id="comment-submit" class="comment-submit">
+                    <i class="fas fa-paper-plane"></i>
+                    Objavi komentar
+                </button>
+            </div>
+    
+            <div id="images-preview" class="images-preview">
+                <!-- Predogled izbranih slik bo prikazan tukaj -->
+            </div>
+        </div>
+    
+        <div id="comments-list">
+            <!-- Komentarji bodo dodani dinamično -->
+        </div>
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script src="../js/app.js"></script>
+<script src="../js/authStatus.js"></script>
+<script src="../js/enaAktivnost.js"></script>
+<script>
+    document.getElementById('download-pdf-btn').addEventListener('click', async () => {
+        const content = document.getElementById('activity-detail');
+        const map = document.getElementById('map');
+        const mapWrapper = document.getElementById('map-wrapper') || map.parentElement;
+        const participantsInfo = document.querySelector('.activity-participants-info');
+        const commentSection = document.querySelector('.comment-section');
+        const actionButtons = document.querySelector('.action-buttons');
+        const commentsList = document.getElementById('comments-list');
+    
+        // Skrij sekcije
+        if (participantsInfo) {
+            participantsInfo.style.display = 'none';
+        }
+        if (commentSection) {
+            commentSection.style.display = 'none';
+        }
+        if (actionButtons) {
+            actionButtons.style.display = 'none';
+        }
+        if (commentsList) {
+            commentsList.style.display = 'none';
+        }
+
+        // 1. Ustvari sliko zemljevida z html2canvas
+        const canvas = await html2canvas(map, {
+            useCORS: true,
+            allowTaint: true,
+            scale: 2,
+            logging: false
+        });
+    
+        // 2. Pretvori v base64 sliko
+        const mapImage = canvas.toDataURL("image/jpeg", 0.95);
+    
+        // 3. Skrij pravi zemljevid
+        map.style.display = 'none';
+    
+        // 4. Dodaj nadomestno sliko v DOM
+        const img = document.createElement('img');
+        img.src = mapImage;
+        img.style.width = '100%';
+        img.style.height = 'auto';
+        img.id = 'map-screenshot';
+        mapWrapper.appendChild(img);
+    
+        // 5. Uporabi začasen stil za PDF
+        const originalStyle = content.getAttribute('style') || '';
+        content.style.maxWidth = '1200px';
+        content.style.margin = '0 auto';
+        content.style.padding = '15px';
+        content.style.boxSizing = 'border-box';
+        content.style.backgroundColor = 'white';
+        content.style.fontSize = '14px';
+    
+        // 6. Generiraj PDF
+        const options = {
+            filename: 'aktivnost.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: {
+                scale: 0.9,
+                useCORS: true,
+                allowTaint: true,
+                scrollX: 0,
+                scrollY: 0,
+                windowWidth: window.innerWidth,
+                windowHeight: window.innerHeight,
+                letterRendering: true
+            },
+            jsPDF: { 
+                unit: 'in', 
+                format: 'a4', 
+                orientation: 'portrait',
+                compress: true,
+                hotfixes: ["px_scaling"]
+            }
+        };
+    
+        try {
+            await html2pdf().set(options).from(content).save();
+        } catch (err) {
+            console.error('Napaka pri generiranju PDF-ja:', err);
+            alert('Napaka pri generiranju PDF-ja. Poskusite znova.');
+        }
+    
+        // 7. Povrni originalno stanje
+        img.remove();
+        map.style.display = 'block';
+        content.setAttribute('style', originalStyle);
+        if (participantsInfo) {
+            participantsInfo.style.display = 'block';
+        }
+        if (commentSection) {
+            commentSection.style.display = 'block';
+        }
+        if (actionButtons) {
+            actionButtons.style.display = 'flex';
+        }
+        if (commentsList) {
+            commentsList.style.display = 'block';
+        }
+    });
+    </script>
+    
+
+</body>
+</html>

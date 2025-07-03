@@ -1,0 +1,9 @@
+ docker exec -it praktikum01-hosted-web-1 bash
+
+procesi:
+
+lsof -i :3000
+
+baza:
+
+docker run -it --rm --network praktikum01-hosted_default mariadb:11 mariadb -h db -u guest -p

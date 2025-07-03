@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  db:
+    image: mariadb:11
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: najdisoigralca
+      MYSQL_USER: guest
+      MYSQL_PASSWORD: guest
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  mariadb-client:
+    image: mariadb:11
+    container_name: mariadb-client
+    depends_on:
+      - db  # your mariadb server service name
+    entrypoint: ["mariadb"]
+    command:
+      - "-h"
+      - "db"            # host name of your mariadb server container
+      - "-u"
+      - "guest"         # your database username
+      - "-pguest"       # your database password, no space between -p and password
+    stdin_open: true    # keep stdin open to allow interactive use
+    tty: true           # allocate a pseudo-TTY for interactive terminal
+
+  web:
+    image: node:20
+    working_dir: /usr/src/app
+    command: ["node", "server.js"]
+    volumes:
+      - /mnt/pool1/projects/najdisoigralca/praktikum01/node:/usr/src/app
+      - /mnt/pool1/projects/najdisoigralca/praktikum01/public/html:/usr/src/app/public
+      - /mnt/pool1/projects/najdisoigralca/praktikum01/public/css:/usr/src/app/public/css
+      - /mnt/pool1/projects/najdisoigralca/praktikum01/public/js:/usr/src/app/public/js
+      - /mnt/pool1/projects/najdisoigralca/praktikum01/public/images:/usr/src/app/public/images
+
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=db
+      - DB_USER=guest
+      - DB_PASSWORD=guest
+      - DB_NAME=najdisoigralca
+      - DB_PORT=3306
+    depends_on:
+      - db
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: mailhog
+    ports:
+      - "1025:1025"   # SMTP
+      - "8025:8025"   # Web UI
+
+volumes:
+  db_data:

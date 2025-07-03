@@ -1,0 +1,768 @@
+:root {
+    /* Barvne spremenljivke - samo rumeno, belo in črno */
+    --black: black;
+    --white: white;
+    --gray: #f5f5f5;
+    --dark-gray: #333;
+    --light-gray: #e0e0e0;
+}
+
+/* ===================================== */
+/* HERO SEKCIJA */
+/* ===================================== */
+.hero {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--white);
+    color: var(--black);
+}
+
+.hero-overlay {
+    display: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--dark-gray);
+}
+
+/* Gumb za poziv k dejanju (CTA) */
+.cta-button {
+    display: inline-block;
+    background-color: var(--yellow);
+    color: var(--black);
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    background-color:var(--yellow)
+}
+
+/* ===================================== */
+/* ISKALNIK */
+/* ===================================== */
+
+.search-input,
+.search-select {
+    flex: 1;
+    min-width: 200px;
+    padding: 1rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+
+.search-select {
+    border: 2px solid var(--white);
+    background-color: var(--white);
+    cursor: pointer;
+}
+
+/* ===================================== */
+/* ŠPORTNA PONUDBA */
+/* ===================================== */
+.sports-grid {
+    padding: 4rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.sport-card {
+    padding-top: 4rem;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+}
+
+.sport-card:hover {
+    transform: translateY(-8px);
+}
+
+.sport-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* ===================================== */
+/* KAKO DELUJE */
+/* ===================================== */
+.how-it-works {
+    padding: 5rem 0;
+    background-color: var(--white);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--black);
+}
+
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.step {
+    text-align: center;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 10px;
+    transition: transform 0.3s;
+    border: 1px solid var(--light-gray);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.step:hover {
+    transform: translateY(-5px);
+}
+
+.step-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: var(--black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-icon i {
+    font-size: 2rem;
+    color: var(--white);
+}
+
+.step h3 {
+    margin-bottom: 1rem;
+    color: var(--black);
+    font-size: 1.5rem;
+}
+
+.step p {
+    color: var(--dark-gray);
+    line-height: 1.6;
+}
+
+/* ===================================== */
+/* MNENJA UPORABNIKOV */
+/* ===================================== */
+.testimonials {
+    padding: 5rem 0;
+    background-color: var(--gray);
+}
+
+.testimonials h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--black);
+}
+
+.testimonials-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.testimonial {
+    flex: 1;
+    min-width: 300px;
+    max-width: 350px;
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    position: relative;
+    border: 1px solid white;
+}
+
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.testimonial-author img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+
+.author-info h4 {
+    color: var(--black);
+    margin-bottom: 0.2rem;
+}
+
+.author-info p {
+    color: #777777;
+    font-size: 0.8rem;
+}
+
+/* ===================================== */
+/* ODZIVNOST */
+/* ===================================== */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+    }
+
+    nav ul {
+        margin-top: 1rem;
+    }
+
+    nav ul li {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .search-form {
+        flex-direction: column;
+    }
+
+    .search-input,
+    .search-select,
+    .search-button {
+        width: 100%;
+    }
+}
+
+/* ===================================== */
+/* SPORT CATEGORIES */
+/* ===================================== */
+.sport-categories {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.sport-category-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--black);
+    color: var(--white);
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: 2px solid var(--black);
+}
+
+.sport-category-btn i {
+    font-size: 1.2rem;
+    color: var(--white);
+}
+
+.sport-category-btn:hover {
+    transform: translateY(-3px);
+    background-color: transparent;
+    color: var(--black);
+}
+
+.sport-category-btn:hover i {
+    color: var(--black);
+}
+
+/* ===================================== */
+/* TESTIMONIALS */
+/* ===================================== */
+.testimonials-slider {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.testimonial {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--light-gray);
+    transition: transform 0.3s;
+}
+
+.testimonial:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-content {
+    position: relative;
+    padding: 1rem 0;
+}
+
+.testimonial-content i {
+    color: var(--black);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.testimonial-content p {
+    color: var(--dark-gray);
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--light-gray);
+}
+
+.testimonial-author img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    border: 2px solid var(--light-gray);
+}
+
+.author-info h4 {
+    margin: 0;
+    color: var(--black);
+    font-size: 1.2rem;
+}
+
+.author-info p {
+    margin: 0;
+    color: var(--dark-gray);
+    font-size: 0.9rem;
+}
+
+/* ===================================== */
+/* FOOTER */
+/* ===================================== */
+.footer {
+    margin-top: 4rem;
+    padding: 1.5rem 0;
+    background-color: transparent;
+    color: #000;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+/* Remove old footer styles */
+.footer-content,
+.footer-logo,
+.footer-links,
+.footer-social,
+.footer-bottom,
+.social-icons {
+    display: none;
+}
+
+/* ===================================== */
+/* RESPONSIVE DESIGN */
+/* ===================================== */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .sport-categories {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sport-category-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .step {
+        padding: 1.5rem;
+    }
+
+    .step-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .step-icon i {
+        font-size: 1.5rem;
+    }
+
+    .testimonial {
+        padding: 1.5rem;
+    }
+}
+
+/* ===================================== */
+/* SCROLL ARROW */
+/* ===================================== */
+.scroll-arrow {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 1rem 0;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.scroll-arrow i {
+    font-size: 2rem;
+    color: var(--black);
+    animation: bounce 2s infinite;
+}
+
+.scroll-arrow:hover {
+    transform: translateY(5px);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ===================================== */
+/* HIDDEN SECTIONS */
+/* ===================================== */
+.hidden-sections {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.hidden-sections.visible {
+    display: block;
+    opacity: 1;
+}
+
+/* Animated background */
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.floating-element {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 50%;
+    animation: float 15s infinite ease-in-out;
+}
+
+.element1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+    background: linear-gradient(45deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.05) 100%);
+}
+
+.element2 {
+    width: 200px;
+    height: 200px;
+    top: 30%;
+    right: 10%;
+    animation-delay: -2s;
+    background: linear-gradient(135deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.05) 100%);
+}
+
+.element3 {
+    width: 150px;
+    height: 150px;
+    bottom: 20%;
+    left: 15%;
+    animation-delay: -4s;
+    background: linear-gradient(225deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.05) 100%);
+}
+
+.element4 {
+    width: 250px;
+    height: 250px;
+    bottom: 30%;
+    right: 20%;
+    animation-delay: -6s;
+    background: linear-gradient(315deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.05) 100%);
+}
+
+.element5 {
+    width: 180px;
+    height: 180px;
+    top: 50%;
+    left: 30%;
+    animation-delay: -8s;
+    background: linear-gradient(45deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.05) 100%);
+}
+
+.element6 {
+    width: 220px;
+    height: 220px;
+    top: 20%;
+    right: 30%;
+    animation-delay: -10s;
+    background: linear-gradient(135deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.05) 100%);
+}
+
+.element7 {
+    width: 160px;
+    height: 160px;
+    bottom: 40%;
+    left: 40%;
+    animation-delay: -12s;
+    background: linear-gradient(225deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.05) 100%);
+}
+
+.element8 {
+    width: 280px;
+    height: 280px;
+    top: 40%;
+    right: 40%;
+    animation-delay: -14s;
+    background: linear-gradient(315deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.05) 100%);
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    33% {
+        transform: translate(30px, -50px) rotate(120deg) scale(1.1);
+    }
+    66% {
+        transform: translate(-20px, 20px) rotate(240deg) scale(0.9);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg) scale(1);
+    }
+}
+
+/* Update main content to work with new background */
+main {
+    position: relative;
+    z-index: 1;
+}
+
+/* Update hero section for better contrast */
+.hero {
+    position: relative;
+    z-index: 2;
+}
+
+/* Comment section styles */
+.comment-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
+}
+
+.comments-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.comments-header h3 {
+    color: var(--black);
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
+.comment-form {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #e0e0e0;
+}
+
+.comment-input {
+    width: 100%;
+    min-height: 100px;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    resize: vertical;
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.3s;
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.comment-input:focus {
+    outline: none;
+    border-color: var(--black);
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+}
+
+.comment-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 15px;
+    gap: 1rem;
+}
+
+.comment-submit {
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    padding: 0.7rem 1.25rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.comment-submit:hover {
+    background: #333333;
+    transform: translateY(-2px);
+}
+
+#comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.comment {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-left: 4px solid var(--black);
+}
+
+.comment-content {
+    margin-bottom: 12px;
+}
+
+.comment-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333333;
+    margin: 0;
+}
+
+.comment-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.comment-author {
+    font-weight: 600;
+    color: var(--black);
+}
+
+.comment-date {
+    color: #666666;
+}
+
+.success-message {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--black);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    animation: slideIn 0.3s ease-out;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="sl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NajdiSoigralce</title>
+    
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/transition.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+
+<body>
+    <header>
+        <div class="logo">NajdiSoigralce</div>
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <nav class="nav">
+            <a href="index.html">Domov</a>
+            <a href="info.html">Info</a>
+            <a href="contact.html">Kontakt</a>
+            <a href="seznam_aktivnosti.html">Moje aktivnosti</a>
+            <a href="uporabnik.html">Uporabnik</a>
+            <a id="auth-link" href="#">Prijava/Registracija</a>
+        </nav>
+    </header>
+
+    <div class="background1"></div>
+    <div class="animated-background">
+        <div class="floating-element element1"></div>
+        <div class="floating-element element2"></div>
+        <div class="floating-element element3"></div>
+        <div class="floating-element element4"></div>
+        <div class="floating-element element5"></div>
+        <div class="floating-element element6"></div>
+        <div class="floating-element element7"></div>
+        <div class="floating-element element8"></div>
+    </div>
+
+    <main style="flex: 1 0 auto;">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Najdi svoje soigralce</h1>
+                <p class="hero-subtitle">Poveži se z ljudmi v tvoji okolici in uživaj v športu skupaj</p>
+                
+                <div class="sport-categories">
+                    <a href="sporti1.html" class="sport-category-btn">
+                        <i class="fas fa-futbol"></i>
+                        Športi z žogo
+                    </a>
+                    <a href="sporti2.html" class="sport-category-btn">
+                        <i class="fas fa-table-tennis-paddle-ball"></i>
+                        Športi z loparjem
+                    </a>
+                    <a href="sporti3.html" class="sport-category-btn">
+                        <i class="fas fa-hand-fist"></i>
+                        Kontaktni športi
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="scroll-arrow">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+
+        <div class="hidden-sections">
+            <!-- How It Works Section -->
+            <section class="how-it-works">
+                <div class="container">
+                    <h2 class="section-title">Kako deluje?</h2>
+                    <div class="steps-container">
+                        <div class="step">
+                            <div class="step-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3>Izberi šport</h3>
+                            <p>Izberi šport, ki te zanima in v katerem želiš najti soigralce.</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h3>Poišči dogodke</h3>
+                            <p>Oglej si seznam dogodkov v tvoji bližini ali ustvari nov dogodek.</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Pridruži se</h3>
+                            <p>Pridruži se izbranemu dogodku in spoznaj nove soigralce.</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3>Igraj in uživaj</h3>
+                            <p>Pridi na dogodek, igraj in uživaj v športu z novimi ljudmi.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section class="testimonials">
+                <h2>Kaj pravijo uporabniki</h2>
+                <div class="comment-section">
+                    <div class="comments-header">
+                        <h3><i class="fas fa-comments"></i> Komentarji</h3>
+                        <span id="comments-count">0 komentarjev</span>
+                    </div>
+                    
+                    <div class="comment-form">
+                        <textarea id="comment-input" class="comment-input" placeholder="Dodaj komentar..."></textarea>
+                    </div>
+                
+                    <div class="comment-actions">
+                        <button id="comment-submit" class="comment-submit">
+                            <i class="fas fa-paper-plane"></i>
+                            Objavi komentar
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="comments-list">
+                    <!-- Komentarji bodo dodani dinamično -->
+                </div>
+            </section>
+
+            <footer class="footer mt-5 py-3 bg-transparent text-black">
+                <div class="container text-center">
+                    <p class="mb-1">© 2024 NajdiSoigralce. Vse pravice pridržane.</p>
+                    <p class="mb-0">Ustvarili: Mark Karpov, Miha Kitak, Luka Petek in Vito Gojkovič</p>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/authStatus.js"></script>
+    <script src="../js/indexKomentarji.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

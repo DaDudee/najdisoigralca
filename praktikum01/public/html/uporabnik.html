@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NajdiSoigralce - Uporabnik</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/transition.css">
+    <link rel="stylesheet" href="../css/searchUsers.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<header>
+<div class="logo">NajdiSoigralce</div>
+    <div class="hamburger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <nav class="nav">
+
+        <a href="index.html">Domov</a>
+        <a href="info.html">Info</a>
+        <a href="contact.html">Kontakt</a>
+        <a href="seznam_aktivnosti.html">Moje aktivnosti</a>
+        <a href="uporabnik.html">Uporabnik</a>
+        <div class="dropdown">
+            <span class="dropdown-btn">Izberi šport</span>
+            <div class="dropdown-content">
+                <a href="sporti1.html">Športi z žogo</a>
+                <a href="sporti2.html">Športi z loparjem</a>
+                <a href="sporti3.html">Kontaktni športi</a>
+            </div>
+        </div>
+        <a id="auth-link" href="#">
+           Prijava/Registracija
+        </a>
+    </nav>
+</header>
+
+    <div class="background1"></div>
+
+    <main class="d-flex align-items-center flex-grow-1">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title text-center mb-4">Uporabnik</h2>
+
+                            <form id="urediUporabnikaForm" enctype="multipart/form-data">
+    <div class="profile-section text-center">
+        <div class="mb-4 position-relative d-flex flex-column align-items-center">
+            <div class="position-relative rounded-circle d-flex justify-content-center align-items-center bg-light"
+                 style="width: 150px; height: 150px; cursor: pointer; overflow: hidden; border: 2px dashed #adb5bd;"
+                 onclick="document.getElementById('imageUpload').click()"
+                 onmouseover="this.querySelector('.hover-overlay').style.opacity='1'"
+                 onmouseout="this.querySelector('.hover-overlay').style.opacity='0'">
+
+                <img id="profilePic" class="w-100 h-100 d-none" style="object-fit: cover;">
+                <i id="defaultIcon" class="fas fa-camera text-secondary fs-1"></i>
+
+                <div class="hover-overlay position-absolute top-0 start-0 w-100 h-100 rounded-circle d-flex justify-content-center align-items-center"
+                     style="background-color: rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.3s;">
+                    <i class="fas fa-upload text-white fs-4"></i>
+                </div>
+            </div>
+            <input type="file" id="imageUpload" name="slika" accept="image/*" class="d-none" onchange="previewImage(event)">
+            <small class="d-block text-center text-muted mt-2">Klikni za spremembo slike</small>
+        </div>
+
+        <div id="uporabnikPodatki" class="text-center mb-4"></div>
+
+        <div class="container mt-4">
+            <h3>Spremeni podatke</h3>
+            <div class="mb-3">
+                <label for="novoIme" class="form-label">Novo ime</label>
+                <input type="text" class="form-control" id="novoIme" name="ime">
+            </div>
+            <div class="mb-3">
+                <label for="novoGeslo" class="form-label">Novo geslo</label>
+                <input type="password" class="form-control" id="novoGeslo" name="geslo">
+            </div>
+            <button type="submit" class="btn btn-dark">Shrani spremembe</button>
+            <div id="sporociloShranjeno" class="mt-2 text-success" style="display:none;">Podatki uspešno shranjeni.</div>
+        </div>
+    </div>
+</form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                                        <!-- Floating search button -->
+                                <button class="floating-search-btn" id="floating-search-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                                </button>
+
+                                <!-- Search container (hidden by default) -->
+                                <div class="search-overlay" id="search-overlay">
+                                <div class="search-header">
+                                    <h3>Išči uporabnike</h3>
+                                    <button class="close-search-btn" id="close-search-btn">&times;</button>
+                                </div>
+                                
+                                <div class="search-container">
+                                    <form class="search-form" id="user-search-form">
+                                    <div class="search-input-wrapper">
+                                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        </svg>
+                                        <input type="text" class="search-input" id="username-input" placeholder="Vnesi uporabniško ime">
+                                        <button type="button" class="clear-search-btn" id="clear-search-btn">&times;</button>
+                                    </div>
+                                    </form>
+                                </div>
+
+                                <div id="user-results" class="user-results-container"></div>
+                                </div>
+    </main>
+
+    <footer class="footer mt-5 py-3 bg-transparent text-black">
+        <div class="container text-center">
+            <p class="mb-1">© 2024 NajdiSoigralce. Vse pravice pridržane.</p>
+            <p class="mb-0">Ustvarili: Mark Karpov, Miha Kitak, Luka Petek in Vito Gojkovič</p>
+        </div>
+    </footer>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/authStatus.js"></script>
+    <script src="../js/posodobitevUporabnik.js"></script>
+    <script src="../js/izpisUporabnika.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/slikaUporabnika.js"></script>
+    <script src="../js/preveriPrijavo.js"></script>
+    <script src="../js/predogledSlike.js"></script>
+    <script src="../js/searchUsers.js"></script>
+</body>
+</html>

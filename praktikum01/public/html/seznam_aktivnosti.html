@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NajdiSoigralce - Seznam aktivnosti</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/transition.css">
+    <link rel="stylesheet" href="../css/accordion.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #e74c3c;
+        }
+        
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            font-size: 14px;
+            transition: opacity 0.3s ease;
+            color: white;
+        }
+
+        .success-message.success {
+            background-color: #2ecc71;
+        }
+
+        .success-message.danger {
+            background-color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+<header>
+<div class="logo">NajdiSoigralce</div>
+    <div class="hamburger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <nav class="nav">
+
+        <a href="index.html">Domov</a>
+        <a href="info.html">Info</a>
+        <a href="contact.html">Kontakt</a>
+        <a href="seznam_aktivnosti.html">Moje aktivnosti</a>
+        <a href="uporabnik.html">Uporabnik</a>
+        <div class="dropdown">
+            <span class="dropdown-btn">Izberi šport</span>
+            <div class="dropdown-content">
+                <a href="sporti1.html">Športi z žogo</a>
+                <a href="sporti2.html">Športi z loparjem</a>
+                <a href="sporti3.html">Kontaktni športi</a>
+            </div>
+        </div>
+        <a id="auth-link" href="#">
+           Prijava/Registracija
+        </a>
+    </nav>
+</header>
+    
+    <main style="flex: 1 0 auto; padding: 20px; max-width: 1200px; margin: 0 auto;">
+        <h1 class="seznam-naslov">Seznam</h1>
+        <div class="accordion-container">
+            <!-- Prijavljene aktivnosti -->
+            <div class="accordion-column">
+                <div class="accordion" id="accordionPrijavljene">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingPrijavljene">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePrijavljene" aria-expanded="false" aria-controls="collapsePrijavljene">
+                                Moje prijavljene aktivnosti
+                            </button>
+                        </h2>
+                        <div id="collapsePrijavljene" class="accordion-collapse collapse" aria-labelledby="headingPrijavljene" data-bs-parent="#accordionPrijavljene">
+                            <div class="accordion-body"> 
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="success-message success" id="successToast" style="display: none;">
+        Uspešno posodobljeno!
+    </div>
+    <div class="success-message danger" id="deleteSuccessToast" style="display: none;">
+        Aktivnost uspešno izbrisana!
+    </div>
+
+    <footer class="footer mt-5 py-3 bg-transparent text-black">
+        <div class="container text-center">
+            <p class="mb-1">© 2024 NajdiSoigralce. Vse pravice pridržane.</p>
+            <p class="mb-0">Ustvarili: Mark Karpov, Miha Kitak, Luka Petek in Vito Gojkovič</p>
+        </div>
+    </footer>
+    <script src="../js/app.js"></script>
+    <script src="../js/authStatus.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/vrniAktivnostiUporabnika.js"></script>
+
+</body>
+</html>
